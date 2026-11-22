@@ -1,0 +1,98 @@
+{
+  "info": {
+    "name": "API Notas CRUD - Aula 05",
+    "description": "Coleção Postman documentando as quatro operações CRUD (Create, Read, Update, Delete) da API de Notas em Express.js.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000"
+    }
+  ],
+  "item": [
+    {
+      "name": "Listar Notas (GET)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/notes",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "notes"]
+        },
+        "description": "Retorna todas as notas armazenadas em data.json. Código esperado: 200 OK."
+      }
+    },
+    {
+      "name": "Obter Nota por ID (GET)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/notes/1",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "notes", "1"]
+        },
+        "description": "Retorna uma nota específica pelo ID. Códigos: 200 OK (encontrada) ou 404 Not Found (inexistente)."
+      }
+    },
+    {
+      "name": "Criar Nota (POST)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"titulo\": \"Estudar Express\",\n  \"texto\": \"Implementar rotas REST com JSON.\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/notes",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "notes"]
+        },
+        "description": "Cria uma nova nota exigindo titulo e texto. Códigos: 201 Created ou 400 Bad Request (campos ausentes)."
+      }
+    },
+    {
+      "name": "Atualizar Nota (PUT)",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"titulo\": \"Lembretes Atualizados\",\n  \"texto\": \"Comprar leite, pão e café\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/notes/1",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "notes", "1"]
+        },
+        "description": "Atualiza titulo e texto de uma nota pelo ID. Códigos: 200 OK, 400 Bad Request ou 404 Not Found."
+      }
+    },
+    {
+      "name": "Excluir Nota (DELETE)",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/notes/1",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "notes", "1"]
+        },
+        "description": "Remove uma nota pelo ID. Códigos: 204 No Content (removida com sucesso) ou 404 Not Found."
+      }
+    }
+  ]
+}
